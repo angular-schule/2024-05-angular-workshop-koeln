@@ -64,7 +64,7 @@ npm install --location=global @angular/cli
 
 ```
 node -v
-> Erwartet: 18.10.x, 20.x.x oder höher, aber nicht 16.x, 19.x oder 21.x!
+> Erwartet: 18.13.x, 20.9.x oder höher, aber nicht 16.x, 19.x oder 21.x!
 
 npm -v
 > Erwartet: 6.x oder höher
