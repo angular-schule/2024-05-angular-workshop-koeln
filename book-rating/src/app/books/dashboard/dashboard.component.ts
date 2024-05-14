@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
 import { Book } from '../shared/book';
-import { JsonPipe, UpperCasePipe } from '@angular/common';
+import { JsonPipe, LowerCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [JsonPipe],
+  imports: [JsonPipe, LowerCasePipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
 
+  // 🦆
   books: Book[] =  [{
     isbn: '000',
     title: 'Angular',
     description: 'Tolles Buch',
     rating: 5
-  }, {
+  } as Book, {
     isbn: '111',
     title: 'AngularJs',
     description: 'Altes Buch',
