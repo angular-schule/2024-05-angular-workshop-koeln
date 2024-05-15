@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Book } from '../shared/book';
 import { JsonPipe, LowerCasePipe, NgClass } from '@angular/common';
 import { BookComponent } from '../book/book.component';
+import { BookRatingService } from '../shared/book-rating.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,8 +13,14 @@ import { BookComponent } from '../book/book.component';
 })
 export class DashboardComponent {
 
+  // constructor(private br: BookRatingService) {
+
+  // }
+
+  br = inject(BookRatingService);
+
   // 🦆
-  books: Book[] =  [{
+  books: Book[] = [{
     isbn: '000',
     title: 'Angular',
     description: 'Tolles Buch',
