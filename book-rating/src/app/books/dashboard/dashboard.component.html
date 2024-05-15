@@ -3,5 +3,7 @@
 </pre> -->
 
 @for (b of books; track b.isbn) {
-  <app-book [book]="b" />
+  <div class="pt-2" [ngClass]="{ grayBg: $even }">
+    <app-book [book]="b" />
+  </div>
 }
