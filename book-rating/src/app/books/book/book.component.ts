@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from '../shared/book';
 
 @Component({
@@ -10,7 +10,24 @@ import { Book } from '../shared/book';
 })
 export class BookComponent {
 
-  @Input()
+  @Input({ required: true })
   book?: Book;
 
+  @Output()
+  rateUp = new EventEmitter<Book>();
+
+  @Output()
+  rateDown = new EventEmitter<Book>();
+
+  doRateUp() {
+    // so...
+    if (this.book) {
+      this.rateUp.next(this.book);
+    }
+  }
+
+  doRateDown() {
+    // ... oder so
+    this.rateDown.emit(this.book)
+  }
 }
