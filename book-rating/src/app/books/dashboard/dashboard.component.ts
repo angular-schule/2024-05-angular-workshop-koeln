@@ -38,10 +38,18 @@ export class DashboardComponent {
   }];
 
   doRateUp(book: Book) {
-    console.table(book);
+    const ratedBook = this.br.rateUp(book);
+    this.updateAndSort(ratedBook);
   }
 
   doRateDown(book: Book) {
-    console.log(book);
+    const ratedBook = this.br.rateDown(book);
+    this.updateAndSort(ratedBook);
+  }
+
+  updateAndSort(ratedBook: Book) {
+    this.books = this.books
+      .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
+      .sort((a, b) => b.rating - a.rating);
   }
 }
