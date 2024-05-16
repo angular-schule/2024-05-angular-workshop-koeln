@@ -36,4 +36,12 @@ export class DashboardComponent {
     description: 'Sehr, sehr altes Buch',
     rating: 1
   }];
+
+  doRateUp(book: Book) {
+    console.table(book);
+  }
+
+  doRateDown(book: Book) {
+    console.log(book);
+  }
 }
