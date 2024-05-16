@@ -19,5 +19,12 @@ describe('BookComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+
+    // so nicht 🙀
+    // component.book = {} as any;
+
+    // // should not throw exception
+    // component.doRateDown()
+    // component.doRateUp()
   });
 });
