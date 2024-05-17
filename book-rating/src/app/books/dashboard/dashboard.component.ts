@@ -1,21 +1,24 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Book } from '../shared/book';
 import { JsonPipe, LowerCasePipe, NgClass } from '@angular/common';
 import { BookComponent } from '../book/book.component';
 import { BookRatingService } from '../shared/book-rating.service';
+import { BookCreateComponent } from '../book-create/book-create.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [JsonPipe, LowerCasePipe, BookComponent, NgClass],
+  imports: [JsonPipe, LowerCasePipe, BookComponent, NgClass, BookCreateComponent],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  styleUrl: './dashboard.component.scss',
+  // vorsicht: bug!
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
 
-  // constructor(private br: BookRatingService) {
-
-  // }
+  constructor() {
+    // setTimeout(() => this.books = [], 3000);
+  }
 
   br = inject(BookRatingService);
 
