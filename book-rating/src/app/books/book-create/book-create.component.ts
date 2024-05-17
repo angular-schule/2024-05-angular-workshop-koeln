@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Book } from '../shared/book';
 import { JsonPipe } from '@angular/common';
@@ -11,6 +11,9 @@ import { JsonPipe } from '@angular/common';
   styleUrl: './book-create.component.scss'
 })
 export class BookCreateComponent {
+
+  @Output()
+  create = new EventEmitter<Book>();
 
   bookForm = new FormGroup({
 
@@ -55,11 +58,7 @@ export class BookCreateComponent {
 
     console.log(book);
 
-    // TODO
-    // 1. erstelle ein Event mit dem Namen `create`
-    // 2. versende das Event mit dem neuen Buch
-    // 3. subscribe dich auf das Event im Dashboard
-    // 4. füge das neue Buch dem Buch-Array hinzu
+    this.create.emit(book);
 
     this.bookForm.reset();
 

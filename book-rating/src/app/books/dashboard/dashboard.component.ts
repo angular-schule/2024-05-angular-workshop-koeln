@@ -4,6 +4,7 @@ import { JsonPipe, LowerCasePipe, NgClass } from '@angular/common';
 import { BookComponent } from '../book/book.component';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BookCreateComponent } from '../book-create/book-create.component';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,29 +17,15 @@ import { BookCreateComponent } from '../book-create/book-create.component';
 })
 export class DashboardComponent {
 
+  br = inject(BookRatingService);
+  bs = inject(BookStoreService);
+
   constructor() {
-    // setTimeout(() => this.books = [], 3000);
+    this.bs.getBooks().subscribe(books => this.books = books);
   }
 
-  br = inject(BookRatingService);
-
   // 🦆
-  books: Book[] = [{
-    isbn: '000',
-    title: 'Angular',
-    description: 'Tolles Buch',
-    rating: 5
-  }, {
-    isbn: '111',
-    title: 'AngularJs',
-    description: 'Altes Buch',
-    rating: 3
-  }, {
-    isbn: '222',
-    title: 'jQuery',
-    description: 'Sehr, sehr altes Buch',
-    rating: 1
-  }];
+  books: Book[] = [];
 
   doRateUp(book: Book) {
     const ratedBook = this.br.rateUp(book);
@@ -58,5 +45,9 @@ export class DashboardComponent {
     this.books = this.books
       .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
       .sort((a, b) => b.rating - a.rating);
+  }
+
+  addBook(book: Book) {
+    this.books = [...this.books, book];
   }
 }

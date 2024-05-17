@@ -2,7 +2,9 @@
 {{ books | json }}
 </pre> -->
 
-<app-book-create />
+<app-book-create
+  (create)="addBook($event)"
+/>
 
 @for (b of books; track b.isbn) {
   <div class="pt-2" [ngClass]="{ grayBg: $even }">
