@@ -61,7 +61,6 @@ export class BookCreateComponent {
     this.create.emit(book);
 
     this.bookForm.reset();
-
   }
 
 }

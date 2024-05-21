@@ -21,7 +21,8 @@ export class DashboardComponent {
   bs = inject(BookStoreService);
 
   constructor() {
-    this.bs.getBooks().subscribe(books => this.books = books);
+    const subscription = this.bs.getBooks().subscribe(books => this.books = books);
+    // subscription.unsubscribe(); // NICHT NOTWENDIG
   }
 
   // 🦆
