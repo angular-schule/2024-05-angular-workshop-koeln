@@ -26,6 +26,12 @@ export class CreatingComponent {
 
     const observable$ = of('😺', '🤩', '😎');
 
+    const observable2 = new Observable<string>(e => {
+
+      // Observer --> Subscriber!
+      e.next('😺');
+    })
+
     const observer = {
       next: (e: string) => this.log(e),
       error: (err: any) => this.log('ERROR ' + err),
