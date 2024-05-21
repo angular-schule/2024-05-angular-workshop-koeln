@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
+import {provideHttpClientTesting} from "@angular/common/http/testing";
+import { provideHttpClient } from '@angular/common/http';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -20,7 +22,10 @@ describe('DashboardComponent', () => {
       providers: [{
         provide: BookRatingService,
         useValue: bookRatingMock
-      }]
+      },
+      provideHttpClient(),
+      provideHttpClientTesting()
+    ]
     })
     .compileComponents();
 
