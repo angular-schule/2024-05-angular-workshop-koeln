@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subject, ReplaySubject, scan, reduce } from 'rxjs';
+import { Subject, ReplaySubject, scan, reduce, tap } from 'rxjs';
 import { HistoryComponent } from '../../shared/history/history.component';
 
 @Component({
@@ -23,7 +23,10 @@ export class GamescoreComponent {
 
     /******************************/
 
-    this.score$
+    this.score$.pipe(
+
+      tap(x => console.log(x))
+    )
 
     /******************************/
 
