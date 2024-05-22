@@ -6,7 +6,7 @@
   (create)="addBook($event)"
 />
 
-@for (b of books; track b.isbn) {
+@for (b of books$$(); track b.isbn) {
   <div class="pt-2" [ngClass]="{ grayBg: $even }">
     <app-book
       [book]="b"
@@ -14,4 +14,9 @@
       (rateDown)="doRateDown($event)"
     />
   </div>
+}
+
+
+@if(loading$$()) {
+  <h3>Loading...</h3>
 }
