@@ -34,12 +34,17 @@ export class ChatComponent {
      * - concat (Emit values from source 1, when complete, subscribe to source 2...)
      * - race (The observable to emit first is used.)
      * - forkJoin (When all observables complete, emit the last emitted value from each.)
+     * - TODO: probiert zip aus! :-)
      */
 
     /**************!!**************/
 
-     EMPTY.subscribe({                                   
-      next: e => this.log(e),
+    forkJoin([
+      this.msg.julia$,
+      this.msg.georg$,
+      this.msg.john$,
+    ]).subscribe({
+      next: e => this.log(e.toString()),
       error: err => this.log('❌ ERROR: ' + err),
       complete: () => this.log('✅ All members left')
     });
